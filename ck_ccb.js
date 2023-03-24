@@ -45,29 +45,30 @@ async function ccb_life() {
                     result.errMsg
                 }\n`;
             }
-            await utils.sleep(1000);
-            continue;
         }
-        console.log(info);
-        notify.sendNotify('建行生活', info);
+        console.log(info)
+        await notify.sendNotify('建行生活', info);
     } else {
         info = '签到失败：请先获取Cookie⚠️';
-        notify.sendNotify('建行生活', info);
+        await notify.sendNotify('建行生活', info);
     } $.done()
 }
 
 // 签到
 function sign(bodydata_str) {
     url = `https://yunbusiness.ccb.com/clp_coupon/txCtrl?txcode=A3341A040`
-    return fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(bodydata_str)
-    }).then(function (response) {
-        return response.json();
-    }).catch(function (e) {
-        const error = '签到出现错误，请检查⚠️';
-        console.log(error + '\n' + e);
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(bodydata_str)
+        }).then(function (response) {
+            resolve(response.json());
+        }).catch(function (e) {
+            const error = '签到出现错误，请检查⚠️';
+            console.log(error + '\n' + e);
+            reject(e);
+        });
     });
 }
 
