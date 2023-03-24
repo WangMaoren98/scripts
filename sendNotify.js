@@ -48,7 +48,7 @@ let CHAT_TOKEN = '';
 
 // =======================================Bark App通知设置区域===========================================
 //此处填你BarkAPP的信息(IP/设备码，例如：https://api.day.app/XXXXXXXX)
-let BARK_PUSH = 'nCuqUnigMibYo7yDY8cHN4';
+let BARK_PUSH = '';
 //BARK app推送图标,自定义推送图标(需iOS15或以上)
 let BARK_ICON = 'https://qn.whyour.cn/logo.png';
 //BARK app推送铃声,铃声列表去APP查看复制填写
